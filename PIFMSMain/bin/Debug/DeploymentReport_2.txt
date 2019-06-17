@@ -1,0 +1,20 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [Markets] (Schema)
+       [Markets].[MarketInfo] (Table)
+       [Authorization].[Permissions] (Table)
+       [Authorization].[RolePermissions] (Table)
+       [Authorization].[Roles] (Table)
+       [Authorization].[UserRoles] (Table)
+
+** Supporting actions

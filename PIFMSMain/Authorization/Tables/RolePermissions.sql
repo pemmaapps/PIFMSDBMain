@@ -1,0 +1,6 @@
+﻿CREATE TABLE [Authorization].[RolePermissions]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [RoleId] UNIQUEIDENTIFIER NOT NULL, 
+    [PermissionId] UNIQUEIDENTIFIER NOT NULL
+)
