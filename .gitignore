@@ -1,3 +1,5 @@
 /.vs
 /PIFMSMain/bin
 /PIFMSMain/obj
+/PIFMSMain/PIFMSMain.dbmdl
+/PIFMSMain/PIFMSMain.jfm
