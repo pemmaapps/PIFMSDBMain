@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [Authorization].[Permissions]
 (
-	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWID(), 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY , 
     [Name] NVARCHAR(100) NOT NULL, 
     [Description] NVARCHAR(100) NULL, 
-    [CreatedDate] DATETIME NULL, 
-    [CreatedBy] UNIQUEIDENTIFIER NULL, 
+    [CreatedDate] DATETIME NOT NULL, 
+    [CreatedBy] BIGINT NOT NULL, 
     [ModifiedDate] DATETIME NULL, 
-    [ModifiedBy] UNIQUEIDENTIFIER NULL
+    [ModifiedBy] BIGINT NULL
 )

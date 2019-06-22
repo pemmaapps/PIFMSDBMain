@@ -1,15 +1,15 @@
 ﻿CREATE TABLE [Authorization].[Users]
 (
-	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWID(), 
-    [FirstName] NVARCHAR(100) NULL, 
+	[Id] BIGINT NOT NULL PRIMARY KEY IDENTITY , 
+    [FirstName] NVARCHAR(100) NOT NULL, 
     [LastName] NVARCHAR(100) NULL, 
-    [Email] NVARCHAR(100) NULL, 
-    [PhoneNumber] NVARCHAR(50) NULL, 
-    [PasswordHash] NVARCHAR(MAX) NULL, 
-    [CreatedDate] DATETIME NULL, 
-    [CreatedBy] UNIQUEIDENTIFIER NULL, 
+    [Email] NVARCHAR(100) NOT NULL, 
+    [PhoneNumber] NVARCHAR(50) NOT NULL, 
+    [PasswordHash] NVARCHAR(MAX) NOT NULL, 
+    [CreatedDate] DATETIME NOT NULL, 
+    [CreatedBy] BIGINT NOT NULL, 
     [LastLoggedin] DATETIME NULL, 
-    [Status] TINYINT NULL, 
+    [Status] TINYINT NOT NULL, 
     [ModifiedDate] DATETIME NULL, 
-    [ModifiedBy] UNIQUEIDENTIFIER NULL
+    [ModifiedBy] BIGINT NULL
 )

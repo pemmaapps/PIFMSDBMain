@@ -1,14 +1,13 @@
 ﻿CREATE TABLE [Markets].[MarketInfo]
 (
-	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWID(), 
+	[Id] BIGINT NOT NULL PRIMARY KEY IDENTITY , 
     [Name] NVARCHAR(200) NOT NULL, 
-    [Description] NVARCHAR(200) NULL, 
-    [ClientId] UNIQUEIDENTIFIER NULL, 
-    [ClientSecret] NVARCHAR(MAX) NULL, 
-    [SecretExpiresOn] DATETIME NULL, 
-    [CreatedDate] DATETIME NULL, 
-    [CreatedBy] UNIQUEIDENTIFIER NULL, 
+    [Description] NVARCHAR(200) NOT NULL, 
+    [ClientId] UNIQUEIDENTIFIER NOT NULL, 
+    [ClientSecret] NVARCHAR(MAX) NOT NULL, 
+    [SecretExpiresOn] DATETIME NOT NULL, 
+    [CreatedDate] DATETIME NOT NULL, 
+    [CreatedBy] BIGINT NOT NULL, 
     [ModifiedDate] DATETIME NULL, 
-    [ModifiedBy] UNIQUEIDENTIFIER NULL, 
-    [Domain] NVARCHAR(200) NULL
+    [ModifiedBy] BIGINT NULL 
 )
