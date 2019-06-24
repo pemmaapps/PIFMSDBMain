@@ -7,6 +7,8 @@ AS
 		LastName, 
 		Email, 
 		PhoneNumber, 
+		PasswordHash,
+		Status,
 		LastLoggedin  
 	FROM [Authorization].[Users] 
 	WHERE 
