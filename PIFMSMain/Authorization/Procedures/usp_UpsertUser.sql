@@ -23,10 +23,10 @@ BEGIN
 	BEGIN
 	
 		UPDATE [Authorization].[Users] SET 
-			[FirstName] =COALESCE(FirstName, @firstName), 
-			[LastName] = COALESCE(LastName, @lastName), 
-			[Email] = COALESCE(Email, @email), 
-			[PhoneNumber] = COALESCE(PhoneNumber, @phoneNumber)
+			[FirstName] = COALESCE(@firstName, FirstName), 
+			[LastName] = COALESCE(@lastName, LastName), 
+			[Email] = COALESCE(@email, Email), 
+			[PhoneNumber] = COALESCE(@phoneNumber, PhoneNumber)
 		WHERE Id = @id
 
 	END
