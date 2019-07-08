@@ -5,9 +5,11 @@
     @email NVARCHAR(100) = NULL, 
     @phoneNumber NVARCHAR(50) = NULL, 
     @passwordHash NVARCHAR(MAX) = NULL ,
-	@createdby INT,
-	@createddate DATETIME,
-	@status TINYINT
+	@createdby INT = 0,
+	@createddate DATETIME = '',
+	@status TINYINT,
+	@modifiedby INT = NULL,
+	@modifieddate DATETIME = NULL
 AS
 BEGIN
 
@@ -26,7 +28,9 @@ BEGIN
 			[FirstName] = COALESCE(@firstName, FirstName), 
 			[LastName] = COALESCE(@lastName, LastName), 
 			[Email] = COALESCE(@email, Email), 
-			[PhoneNumber] = COALESCE(@phoneNumber, PhoneNumber)
+			[PhoneNumber] = COALESCE(@phoneNumber, PhoneNumber),
+			[ModifiedBy] = @modifiedby,
+			[ModifiedDate] = @modifieddate
 		WHERE Id = @id
 
 	END

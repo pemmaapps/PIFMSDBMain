@@ -61,6 +61,7 @@
     <Folder Include="Market" />
     <Folder Include="Market\Tables" />
     <Folder Include="Authorization\Procedures" />
+    <Folder Include="ManualScripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Authorization\Tables\Users.sql" />
@@ -80,5 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="PIFMSMain.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ManualScripts\UpdateScript.sql" />
   </ItemGroup>
 </Project>
