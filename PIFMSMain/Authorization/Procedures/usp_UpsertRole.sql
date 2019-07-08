@@ -3,8 +3,10 @@
 	@name NVARCHAR(50) = NULL, 
     @description NVARCHAR(100) = NULL,
 	@isActive BIT = 1,
-	@createdby INT,
-	@createddate DATETIME
+	@createdby INT = 0,
+	@createddate DATETIME = '',
+	@modifiedby INT = NULL,
+	@modifieddate DATETIME = NULL
 AS
 BEGIN
 
@@ -18,9 +20,11 @@ BEGIN
 	ELSE
 	BEGIN
 		UPDATE [Authorization].[Roles] SET 
-			[Name] = @name , 
-			[Description] = @description,
-			[IsActive] = @isActive
+			[Name] = COALESCE(@name, [Name]) , 
+			[Description] = COALESCE(@description,[Description]),
+			[IsActive] = COALESCE(@isActive, [IsActive]),
+			[ModifiedBy] = @modifiedby,
+			[ModifiedDate] = @modifieddate
 		WHERE [Id] = @id
 	END
 	SELECT @id
