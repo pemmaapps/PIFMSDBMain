@@ -1,4 +1,8 @@
-﻿CREATE PROCEDURE [Authorization].[usp_UpsertUser]
+﻿/*
+This procedure will either Insert or Update User
+*/
+
+CREATE PROCEDURE [Authorization].[usp_UpsertUser]
 	@id BIGINT = NULL,
 	@firstName NVARCHAR(100) = NULL, 
     @lastName NVARCHAR(100) = NULL, 

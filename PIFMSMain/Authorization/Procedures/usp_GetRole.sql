@@ -1,4 +1,9 @@
-﻿CREATE PROCEDURE [Authorization].[usp_GetRole]
+﻿/*
+This procedure gets Role based on the Name passed.
+If Name is not passed then returns all roles.
+*/
+
+CREATE PROCEDURE [Authorization].[usp_GetRole]
 	@Name NVARCHAR(50) = NULL
 AS
 	IF(@Name is NULL)

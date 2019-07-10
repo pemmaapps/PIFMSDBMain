@@ -8,10 +8,10 @@
 	[City] NVARCHAR(100) NOT NULL,
 	[State] NVARCHAR(100) NOT NULL,
 	[Country] NVARCHAR(100) NOT NULL,
-	[Logo] IMAGE NOT NULL,
+	[Logo] IMAGE NULL,
 
 	[CreatedDate] DATETIME NOT NULL, 
-    [CreatedBy] BIGINT NOT NULL, 
+    [CreatedBy] INT NOT NULL, 
     [ModifiedDate] DATETIME NULL, 
-    [ModifiedBy] BIGINT NULL, 
+    [ModifiedBy] INT NULL, 
 )

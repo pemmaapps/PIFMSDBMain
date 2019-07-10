@@ -7,7 +7,7 @@
     [ClientSecret] NVARCHAR(MAX) NOT NULL, 
     [SecretExpiresOn] DATETIME NOT NULL, 
     [CreatedDate] DATETIME NOT NULL, 
-    [CreatedBy] BIGINT NOT NULL, 
+    [CreatedBy] INT NOT NULL, 
     [ModifiedDate] DATETIME NULL, 
-    [ModifiedBy] BIGINT NULL 
+    [ModifiedBy] INT NULL 
 )

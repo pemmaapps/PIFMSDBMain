@@ -1,4 +1,8 @@
-﻿CREATE PROCEDURE [Authorization].[usp_UpsertRole]
+﻿/*
+This procedure will either Insert or Update Role
+*/
+
+CREATE PROCEDURE [Authorization].[usp_UpsertRole]
 	@id INT = NULL,
 	@name NVARCHAR(50) = NULL, 
     @description NVARCHAR(100) = NULL,
