@@ -1,12 +1,19 @@
-﻿/*
-This procedure gets the User based on the Name that is passed
-*/
+﻿-- =============================================
+-- Author:		Vinay
+-- Create date: 7/11/2019
+-- Description:	This procedure gets User detail based on the Email/Phonenumber passed.
+-- PARAMETERS : 
+--				@email - Email id of the user
+--				@phoneNumber - Phonenumber of the user
+-- =============================================
 
 CREATE PROCEDURE [Authorization].[usp_GetUser]
-	@name NVARCHAR(100)
+	@email NVARCHAR(100),
+	@phoneNumber NVARCHAR(50) = NULL
 AS
+BEGIN
 	SELECT 
-		Id, 
+		[UserId], 
 		FirstName, 
 		LastName, 
 		Email, 
@@ -16,7 +23,5 @@ AS
 		LastLoggedin  
 	FROM [Authorization].[Users] 
 	WHERE 
-		Email like '%'+@name+'%'
-		OR FirstName like '%'+@name+'%'
-		OR LastName like '%'+@name+'%'
-RETURN 0
+		(Email = @email OR PhoneNumber = @phoneNumber)
+END

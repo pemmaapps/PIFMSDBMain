@@ -1,9 +1,23 @@
-﻿/*
-This procedure will either Insert or Update MarketProfile
-*/
+﻿-- =============================================
+-- Author:		Vinay
+-- Create date: 7/11/2019
+-- Description:	This procedure used for Insert/Update market profile
+-- PARAMETERS : 
+--				@marketProfileId - Market profile id of the Market profile.
+--				@marketInfoId - Market info id of the Market profile.
+--				@address1 - address of the market
+--				@address2 - address of the market
+--				@landmark - Landmark of the market
+--				@zipcode - Zipcode of the market
+--				@city - City name where the market is.
+--				@state - State name where the market is.
+--				@country - Country name where the market is.
+--				@logo - Logo of the market.
+-- =============================================
 
 CREATE PROCEDURE [Markets].[usp_UpsertMarketProfile]
-	@id BIGINT = NULL, 
+	@marketProfileId INT = NULL,
+	@marketInfoId INT = NULL,
     @address1 NVARCHAR(200) = NULL,
 	@address2 NVARCHAR(200) = NULL,
 	@landmark NVARCHAR(200) = NULL,
@@ -19,12 +33,12 @@ CREATE PROCEDURE [Markets].[usp_UpsertMarketProfile]
 AS
 BEGIN
 
-	IF (@id is null or (SELECT COUNT(*) FROM [Markets].[MarketProfile] WHERE Id = @id) = 0)
+	IF (@marketProfileId is null or (SELECT COUNT(*) FROM [Markets].[MarketProfile] WHERE [MarketProfileId] = @marketProfileId) = 0)
 	BEGIN
 
-	 INSERT INTO [Markets].[MarketProfile] (Address1, Address2, City, Country, Landmark, State, Zipcode, Logo, CreatedDate, CreatedBy) 
-	 VALUES (@address1, @address2, @city, @country, @landmark, @state, @zipcode, @logo, @createdDate, @createdBy)
-	 SET @id = @@IDENTITY
+	 INSERT INTO [Markets].[MarketProfile] (MarketInfoId, Address1, Address2, City, Country, Landmark, State, Zipcode, Logo, CreatedDate, CreatedBy) 
+	 VALUES (@marketInfoId, @address1, @address2, @city, @country, @landmark, @state, @zipcode, @logo, @createdDate, @createdBy)
+	 SET @marketProfileId = @@IDENTITY
     END
 	ELSE
 	BEGIN
@@ -38,8 +52,8 @@ BEGIN
 		[Logo] = COALESCE(@logo, Logo),
 		[ModifiedBy] = @modifiedby,
 		[ModifiedDate] = @modifieddate
-		WHERE Address1 = @address1
+		WHERE MarketProfileId = @marketProfileId
 
 	END
-	SELECT @id
+	SELECT @marketProfileId
 END

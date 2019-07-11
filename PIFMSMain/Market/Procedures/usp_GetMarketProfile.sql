@@ -1,37 +1,32 @@
-﻿/*
-This procedure gets Market profile based on the address1 passed.
-If address1 is not passed then returns all market profiles.
-*/
+﻿-- =============================================
+-- Author:		Vinay
+-- Create date: 7/11/2019
+-- Description:	This procedure gets Market profile based on the MarketId passed
+-- PARAMETERS : 
+--				@marketProfileId - Market profile id
+--				@marketInfoId - Market info id of the Market profile.
+-- =============================================
 CREATE PROCEDURE [Markets].[usp_GetMarketProfile]
-	@address1 NVARCHAR(200) = NULL
-AS
-	IF(@address1 is NULL)
-	BEGIN
-		SELECT 
-			Id, 
-			[Address1],
-			[Address2],
-			[Landmark],
-			[Zipcode],
-			[City],
-			[State],
-			[Country],
-			[Logo]
-		FROM [Markets].[MarketProfile] 
-	END
-	ELSE
-	BEGIN
-		SELECT 
-			Id, 
-			[Address1],
-			[Address2],
-			[Landmark],
-			[Zipcode],
-			[City],
-			[State],
-			[Country],
-			[Logo]
-		FROM [Markets].[MarketProfile] 
-		WHERE [Address1] = @address1
-	END
-RETURN 0
+	@marketProfileId INT = NULL,
+	@marketInfoId INT = NULL
+AS	
+BEGIN
+	SELECT 
+		[MarketProfileId],
+		[MarketInfoId],
+		[Address1],
+		[Address2],
+		[Landmark],
+		[Zipcode],
+		[City],
+		[State],
+		[Country],
+		[Logo]
+	FROM [Markets].[MarketProfile] 
+	WHERE 
+		(@marketProfileId IS NULL OR [MarketProfileId] = @marketProfileId)
+		AND (@marketInfoId IS NULL OR [MarketInfoId] = @marketInfoId)
+END
+
+--EXEC [Markets].[usp_GetMarketProfile] 1
+
