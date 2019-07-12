@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [Markets].[MarketProfile]
 (
-	[Id] BIGINT NOT NULL PRIMARY KEY IDENTITY ,
+	[MarketProfileId] INT NOT NULL PRIMARY KEY IDENTITY ,
+	[MarketInfoId] INT NOT NULL,
 	[Address1] NVARCHAR(200) NOT NULL,
 	[Address2] NVARCHAR(200) NULL,
 	[Landmark] NVARCHAR(200) NULL,
@@ -8,10 +9,10 @@
 	[City] NVARCHAR(100) NOT NULL,
 	[State] NVARCHAR(100) NOT NULL,
 	[Country] NVARCHAR(100) NOT NULL,
-	[Logo] IMAGE NOT NULL,
+	[Logo] IMAGE NULL,
 
 	[CreatedDate] DATETIME NOT NULL, 
-    [CreatedBy] BIGINT NOT NULL, 
+    [CreatedBy] INT NOT NULL, 
     [ModifiedDate] DATETIME NULL, 
-    [ModifiedBy] BIGINT NULL, 
+    [ModifiedBy] INT NULL, 
 )

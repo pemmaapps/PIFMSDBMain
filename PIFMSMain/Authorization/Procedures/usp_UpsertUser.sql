@@ -1,5 +1,20 @@
-﻿CREATE PROCEDURE [Authorization].[usp_UpsertUser]
-	@id BIGINT = NULL,
+﻿-- =============================================
+-- Author:		Vinay
+-- Create date: 7/11/2019
+-- Description:	This procedure used for Insert/Update User detail
+-- PARAMETERS : 
+--				@userId - User id
+--				@firstName - User's first name
+--				@lastName - User's last name
+--				@email - Email address
+--				@phoneNumber - Contact number
+--				@passwordHash - Hashed password
+--				@city - City name where the market is.
+--				@status - User's status
+-- =============================================
+
+CREATE PROCEDURE [Authorization].[usp_UpsertUser]
+	@userId BIGINT = NULL,
 	@firstName NVARCHAR(100) = NULL, 
     @lastName NVARCHAR(100) = NULL, 
     @email NVARCHAR(100) = NULL, 
@@ -13,12 +28,12 @@
 AS
 BEGIN
 
-    IF (@Id is null or (SELECT COUNT(*) FROM [Authorization].[Users] WHERE Id = @Id) = 0)
+    IF (@userId is null or (SELECT COUNT(*) FROM [Authorization].[Users] WHERE UserId = @userId) = 0)
 	BEGIN
 		
 		INSERT INTO [Authorization].[Users] (FirstName, LastName, Email, PhoneNumber, PasswordHash, CreatedBy, CreatedDate, [Status])
 		Values(@firstName, @lastName, @email, @phoneNumber, @passwordHash, @createdby, @createddate, @status)
-		SET @id = @@IDENTITY
+		SET @userId = @@IDENTITY
 
 	END
 	ELSE
@@ -31,8 +46,8 @@ BEGIN
 			[PhoneNumber] = COALESCE(@phoneNumber, PhoneNumber),
 			[ModifiedBy] = @modifiedby,
 			[ModifiedDate] = @modifieddate
-		WHERE Id = @id
+		WHERE UserId = @userId
 
 	END
-	SELECT @id
+	SELECT @userId
 END
