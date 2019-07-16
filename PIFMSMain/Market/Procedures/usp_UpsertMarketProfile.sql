@@ -2,8 +2,8 @@
 -- Author:		Vinay
 -- Create date: 7/11/2019
 -- Description:	This procedure used for Insert/Update market profile
--- PARAMETERS : 
---				@marketProfileId - Market profile id of the Market profile.
+-- Parameters : 
+--				@sysId - Market profile id of the Market profile.
 --				@marketInfoId - Market info id of the Market profile.
 --				@address1 - address of the market
 --				@address2 - address of the market
@@ -16,7 +16,7 @@
 -- =============================================
 
 CREATE PROCEDURE [Markets].[usp_UpsertMarketProfile]
-	@marketProfileId INT = NULL,
+	@sysId INT = NULL,
 	@marketInfoId INT = NULL,
     @address1 NVARCHAR(200) = NULL,
 	@address2 NVARCHAR(200) = NULL,
@@ -33,12 +33,12 @@ CREATE PROCEDURE [Markets].[usp_UpsertMarketProfile]
 AS
 BEGIN
 
-	IF (@marketProfileId is null or (SELECT COUNT(*) FROM [Markets].[MarketProfile] WHERE [MarketProfileId] = @marketProfileId) = 0)
+	IF (@sysId is null or (SELECT COUNT(*) FROM [Markets].[MarketProfile] WHERE [SysId] = @sysId) = 0)
 	BEGIN
 
 	 INSERT INTO [Markets].[MarketProfile] (MarketInfoId, Address1, Address2, City, Country, Landmark, State, Zipcode, Logo, CreatedDate, CreatedBy) 
 	 VALUES (@marketInfoId, @address1, @address2, @city, @country, @landmark, @state, @zipcode, @logo, @createdDate, @createdBy)
-	 SET @marketProfileId = @@IDENTITY
+	 SET @sysId = @@IDENTITY
     END
 	ELSE
 	BEGIN
@@ -52,8 +52,8 @@ BEGIN
 		[Logo] = COALESCE(@logo, Logo),
 		[ModifiedBy] = @modifiedby,
 		[ModifiedDate] = @modifieddate
-		WHERE MarketProfileId = @marketProfileId
+		WHERE SysId = @sysId
 
 	END
-	SELECT @marketProfileId
+	SELECT @sysId
 END

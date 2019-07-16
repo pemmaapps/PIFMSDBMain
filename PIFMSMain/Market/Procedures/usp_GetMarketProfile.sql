@@ -2,17 +2,17 @@
 -- Author:		Vinay
 -- Create date: 7/11/2019
 -- Description:	This procedure gets Market profile based on the MarketId passed
--- PARAMETERS : 
---				@marketProfileId - Market profile id
+-- Parameters : 
+--				@sysId - Market profile id
 --				@marketInfoId - Market info id of the Market profile.
 -- =============================================
 CREATE PROCEDURE [Markets].[usp_GetMarketProfile]
-	@marketProfileId INT = NULL,
+	@sysId INT = NULL,
 	@marketInfoId INT = NULL
 AS	
 BEGIN
 	SELECT 
-		[MarketProfileId],
+		[SysId],
 		[MarketInfoId],
 		[Address1],
 		[Address2],
@@ -24,7 +24,7 @@ BEGIN
 		[Logo]
 	FROM [Markets].[MarketProfile] 
 	WHERE 
-		(@marketProfileId IS NULL OR [MarketProfileId] = @marketProfileId)
+		(@sysId IS NULL OR [SysId] = @sysId)
 		AND (@marketInfoId IS NULL OR [MarketInfoId] = @marketInfoId)
 END
 

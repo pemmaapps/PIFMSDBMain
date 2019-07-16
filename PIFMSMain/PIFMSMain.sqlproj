@@ -63,6 +63,9 @@
     <Folder Include="Authorization\Procedures" />
     <Folder Include="ManualScripts" />
     <Folder Include="Market\Procedures" />
+    <Folder Include="Subscription" />
+    <Folder Include="Subscription\Tables" />
+    <Folder Include="Subscription\Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Authorization\Tables\Users.sql" />
@@ -83,6 +86,18 @@
     <Build Include="Market\Procedures\usp_UpsertMarketProfile.sql" />
     <Build Include="Market\Procedures\usp_GetMarketInfo.sql" />
     <Build Include="Market\Procedures\usp_GetMarketProfile.sql" />
+    <Build Include="Authorization\Procedures\usp_UpsertUserRole.sql" />
+    <Build Include="Authorization\Procedures\usp_GetUserRoles.sql" />
+    <Build Include="Subscription\Subscription.sql" />
+    <Build Include="Subscription\Tables\Subscriptions.sql" />
+    <Build Include="Subscription\Tables\Plans.sql" />
+    <Build Include="Subscription\Tables\MarketPlanSubscriptions.sql" />
+    <Build Include="Subscription\Procedures\usp_UpsertSubscriptions.sql" />
+    <Build Include="Subscription\Procedures\usp_UpsertPlans.sql" />
+    <Build Include="Subscription\Procedures\usp_UpsertMarketPlanSubscriptions.sql" />
+    <Build Include="Subscription\Procedures\usp_GetPlan.sql" />
+    <Build Include="Subscription\Procedures\usp_GetSubscription.sql" />
+    <Build Include="Authorization\Procedures\usp_GetAllRoles.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="PIFMSMain.refactorlog" />

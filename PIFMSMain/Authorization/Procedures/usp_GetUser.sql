@@ -2,7 +2,7 @@
 -- Author:		Vinay
 -- Create date: 7/11/2019
 -- Description:	This procedure gets User detail based on the Email/Phonenumber passed.
--- PARAMETERS : 
+-- Parameters : 
 --				@email - Email id of the user
 --				@phoneNumber - Phonenumber of the user
 -- =============================================
@@ -13,7 +13,7 @@ CREATE PROCEDURE [Authorization].[usp_GetUser]
 AS
 BEGIN
 	SELECT 
-		[UserId], 
+		SysId, 
 		FirstName, 
 		LastName, 
 		Email, 
