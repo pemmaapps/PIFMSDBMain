@@ -2,8 +2,8 @@
 -- Author:		Vinay
 -- Create date: 7/11/2019
 -- Description:	This procedure used for Insert/Update User detail
--- PARAMETERS : 
---				@userId - User id
+-- Parameters : 
+--				@sysId - User id
 --				@firstName - User's first name
 --				@lastName - User's last name
 --				@email - Email address
@@ -14,7 +14,7 @@
 -- =============================================
 
 CREATE PROCEDURE [Authorization].[usp_UpsertUser]
-	@userId BIGINT = NULL,
+	@sysId BIGINT = NULL,
 	@firstName NVARCHAR(100) = NULL, 
     @lastName NVARCHAR(100) = NULL, 
     @email NVARCHAR(100) = NULL, 
@@ -28,12 +28,12 @@ CREATE PROCEDURE [Authorization].[usp_UpsertUser]
 AS
 BEGIN
 
-    IF (@userId is null or (SELECT COUNT(*) FROM [Authorization].[Users] WHERE UserId = @userId) = 0)
+    IF (@sysId is null or (SELECT COUNT(*) FROM [Authorization].[Users] WHERE SysId = @sysId) = 0)
 	BEGIN
 		
 		INSERT INTO [Authorization].[Users] (FirstName, LastName, Email, PhoneNumber, PasswordHash, CreatedBy, CreatedDate, [Status])
 		Values(@firstName, @lastName, @email, @phoneNumber, @passwordHash, @createdby, @createddate, @status)
-		SET @userId = @@IDENTITY
+		SET @sysId = @@IDENTITY
 
 	END
 	ELSE
@@ -46,8 +46,8 @@ BEGIN
 			[PhoneNumber] = COALESCE(@phoneNumber, PhoneNumber),
 			[ModifiedBy] = @modifiedby,
 			[ModifiedDate] = @modifieddate
-		WHERE UserId = @userId
+		WHERE SysId = @sysId
 
 	END
-	SELECT @userId
+	SELECT @sysId
 END

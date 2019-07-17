@@ -2,26 +2,27 @@
 -- Author:		Vinay
 -- Create date: 7/11/2019
 -- Description:	This procedure gets Market info based on the Id passed.
--- PARAMETERS : 
---				@marketInfoId - Market info id.
+-- Parameters : 
+--				@sysId - Market info id.
 --				@ownerId - Market owner id.
 -- =============================================
 CREATE PROCEDURE [Markets].[usp_GetMarketInfo]
-	@marketInfoId INT = NULL,
+	@sysId INT = NULL,
 	@ownerId BIGINT = NULL
 AS
 BEGIN
 	SELECT 
-	[MarketInfoId], 
+	[SysId], 
 	[Name], 
 	[Description],
 	[OwnerId],
 	[ClientId],
 	[ClientSecret],
-	[SecretExpiresOn]
+	[SecretExpiresOn],
+	[Status]
 	FROM [Markets].[MarketInfo] 
 	WHERE 
-	(@marketInfoId IS NULL OR [MarketInfoId] = @marketInfoId)
+	(@sysId IS NULL OR [SysId] = @sysId)
 	AND (@ownerId IS NULL OR [OwnerId] = @ownerId)
 END
 

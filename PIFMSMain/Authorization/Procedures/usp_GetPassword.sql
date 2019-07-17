@@ -2,7 +2,7 @@
 -- Author:		Vinay
 -- Create date: 7/11/2019
 -- Description:	This procedure gets passwordhash based on the Email passed.
--- PARAMETERS : 
+-- Parameters : 
 --				@email - Email id of the user
 -- =============================================
 

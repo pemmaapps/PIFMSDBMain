@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Authorization].[Roles]
 (
-	[RoleId] INT NOT NULL PRIMARY KEY IDENTITY , 
+	[SysId] INT NOT NULL PRIMARY KEY IDENTITY , 
     [Name] NVARCHAR(50) NOT NULL, 
     [Description] NVARCHAR(100) NULL, 
     [CreatedDate] DATETIME NOT NULL, 

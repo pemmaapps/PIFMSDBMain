@@ -2,15 +2,15 @@
 -- Author:		Vinay
 -- Create date: 7/11/2019
 -- Description:	This procedure used for Insert/Update Role
--- PARAMETERS : 
---				@roleId - Role id
+-- Parameters : 
+--				@sysId - Role id
 --				@name - Role's name
 --				@description - Description about role
 --				@isActive - Role status flag
 -- =============================================
 
 CREATE PROCEDURE [Authorization].[usp_UpsertRole]
-	@roleId INT = NULL,
+	@sysId INT = NULL,
 	@name NVARCHAR(50) = NULL, 
     @description NVARCHAR(100) = NULL,
 	@isActive BIT = 1,
@@ -21,11 +21,11 @@ CREATE PROCEDURE [Authorization].[usp_UpsertRole]
 AS
 BEGIN
 
-    IF (@roleId is null or (SELECT COUNT(*) FROM [Authorization].[Roles] WHERE RoleId = @roleId) = 0)
+    IF (@sysId is null or (SELECT COUNT(*) FROM [Authorization].[Roles] WHERE SysId = @sysId) = 0)
 	BEGIN
 		INSERT INTO [Authorization].[Roles] (Name, Description, IsActive, CreatedBy, CreatedDate)
 		Values(@name, @description, @isActive, @createdby, @createddate)
-		SET @roleId = @@IDENTITY
+		SET @sysId = @@IDENTITY
 	END
 
 	ELSE
@@ -36,7 +36,7 @@ BEGIN
 			[IsActive] = COALESCE(@isActive, [IsActive]),
 			[ModifiedBy] = @modifiedby,
 			[ModifiedDate] = @modifieddate
-		WHERE [RoleId] = @roleId
+		WHERE [SysId] = @sysId
 	END
-	SELECT @roleId
+	SELECT @sysId
 END
