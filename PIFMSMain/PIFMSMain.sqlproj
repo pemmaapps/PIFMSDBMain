@@ -98,6 +98,7 @@
     <Build Include="Subscription\Procedures\usp_GetPlan.sql" />
     <Build Include="Subscription\Procedures\usp_GetSubscription.sql" />
     <Build Include="Authorization\Procedures\usp_GetAllRoles.sql" />
+    <Build Include="Authorization\Procedures\usp_GetAllUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="PIFMSMain.refactorlog" />
