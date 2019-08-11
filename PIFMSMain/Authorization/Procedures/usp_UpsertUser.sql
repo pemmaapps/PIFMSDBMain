@@ -44,6 +44,8 @@ BEGIN
 			[LastName] = COALESCE(@lastName, LastName), 
 			[Email] = COALESCE(@email, Email), 
 			[PhoneNumber] = COALESCE(@phoneNumber, PhoneNumber),
+			[PasswordHash] = COALESCE(@passwordHash, PasswordHash),
+			[Status] = COALESCE(@status, Status),
 			[ModifiedBy] = @modifiedby,
 			[ModifiedDate] = @modifieddate
 		WHERE SysId = @sysId

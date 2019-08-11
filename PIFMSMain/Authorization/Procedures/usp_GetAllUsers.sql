@@ -16,5 +16,6 @@ BEGIN
 		PasswordHash,
 		Status,
 		LastLoggedin  
-	FROM [Authorization].[Users] 	
+	FROM [Authorization].[Users]
+	WHERE Status <> 0
 END
